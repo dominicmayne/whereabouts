@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Whereabouts</title>
+  <meta name="description" content="Can't decide what to do tonight? Whereabouts plans your London evening.">
+  <meta name="theme-color" content="#e7e4de" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161b1f" media="(prefers-color-scheme: dark)">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+
+    <!-- Screen 1: landing -->
+    <section class="screen intro" id="screen-intro">
+      <div class="intro-copy">
+        <p class="wordmark">Whereabouts</p>
+        <p class="today" id="today-intro"></p>
+        <h1 class="headline">Can't decide what to do tonight? We'll decide.</h1>
+        <p class="lede">Four quick questions, one evening in London. Dinner, somewhere after, and where to end up.</p>
+        <button class="btn btn-primary" id="start" type="button">Plan tonight</button>
+      </div>
+      <figure class="map-frame intro-map">
+        <svg id="intro-map" class="map" role="img" aria-label="Map of London showing the places Whereabouts can send you"></svg>
+        <figcaption class="map-caption">Tap an area to zoom in</figcaption>
+      </figure>
+    </section>
+
+    <!-- Screen 2: questions. app.js fills in the question and options. -->
+    <section class="screen question" id="screen-question" hidden>
+      <div class="progress" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="q-top">
+        <button class="btn-text" id="back" type="button">Back</button>
+        <span class="q-count" id="q-count">1 of 4</span>
+      </div>
+      <h2 class="q-title" id="q-title"></h2>
+      <div class="options" id="options" role="group" aria-labelledby="q-title"></div>
+      <p class="kbd-hint">Tip: press 1, 2, 3 or 4 to answer.</p>
+    </section>
+
+    <!-- Screen 3: the plan. On phones it stacks; on desktop the map sits on the right. -->
+    <section class="screen plan" id="screen-plan" hidden>
+      <div class="plan-head">
+        <div class="q-top">
+          <button class="btn-text" id="restart" type="button">Start again</button>
+          <span class="q-count" id="plan-tags"></span>
+        </div>
+        <p class="today" id="today-plan"></p>
+        <h2 class="plan-title" id="plan-title"></h2>
+        <p class="plan-story" id="plan-story"></p>
+        <p class="fineprint" id="plan-note"></p>
+      </div>
+
+      <div class="map-frame plan-map">
+        <svg id="plan-map" class="map" role="img" aria-label="Map of tonight's route"></svg>
+        <button class="map-chip" id="overview" type="button">Whole route</button>
+      </div>
+
+      <div class="plan-body">
+        <ol class="route" id="route"></ol>
+        <div class="actions">
+          <button class="btn btn-secondary" id="another" type="button">Another plan</button>
+          <button class="btn btn-primary" id="share" type="button">Share</button>
+        </div>
+        <p class="fineprint">Built from Whereabouts' checked list of London venues. Check opening times before you go. <span class="kbd-hint">Press R for another.</span></p>
+      </div>
+      <p class="toast" id="toast" role="status" aria-live="polite"></p>
+    </section>
+
+  </main>
+
+  <!-- Plain scripts (not modules) so the page works when opened straight from a folder. Order matters. -->
+  <script src="venues.js"></script>
+  <script src="map.js"></script>
+  <script src="planner.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
