@@ -1,5 +1,7 @@
 # Whereabouts
 
+Live at **https://whereabouts-beta-five.vercel.app/**. It updates automatically from the `main` branch on GitHub.
+
 London evening planner. Currently on **Phase 2: real venue dataset**. The app builds each evening from a checked list of 101 London venues.
 
 ## Files
